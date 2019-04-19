@@ -1,0 +1,18 @@
+version: "2"
+services:
+  db:
+    image: postgres:11.1-alpine
+    env_file:
+      - docker-configuration.env
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - docker-configuration.env
+    volumes:
+      - ./www:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db

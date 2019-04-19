@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Patents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @patents.each do |patent| %>
+      <tr>
+        <td><%= patent.first_name %> <%= patent.last_name %></td>
+        <td><%= link_to 'Show', patent %></td>
+        <td><%= link_to 'Edit', edit_patent_path(patent) %></td>
+        <td><%= link_to 'Destroy', patent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Patent', new_patent_path %>
